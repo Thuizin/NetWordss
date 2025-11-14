@@ -39,14 +39,16 @@
      cadastraJogador(&jogador);
      // preencheProducao(producao);
 
-     FILE *arq = fopen("filmes.bin", "wb");
+     FILE *arq = fopen("filmes.bin", "rb");
      if(arq == NULL){
-        FILE *arq = fopen("filmes.csv", "r");
+        arq = fopen("filmes.csv", "r");
         if(arq == NULL){
             perror("Erro: ");
             exit(1);
         }
      }
+// fazer switch para saber qual arquivo foi aberto
+
  
      int tempoLimite = 2; // temporário fixo
  
