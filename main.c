@@ -37,7 +37,16 @@
  
      // Cadastro do jogador e preenchimento inicial das produções
      cadastraJogador(&jogador);
-     preencheProducao(producao);
+     // preencheProducao(producao);
+
+     FILE *arq = fopen("filmes.bin", "wb");
+     if(arq == NULL){
+        FILE *arq = fopen("filmes.csv", "r");
+        if(arq == NULL){
+            perror("Erro: ");
+            exit(1);
+        }
+     }
  
      int tempoLimite = 2; // temporário fixo
  

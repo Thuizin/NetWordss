@@ -499,4 +499,16 @@ void preencheProducao(Producao producao[]) {
     strcpy(producao[24].dicas[9], "Considerada uma das melhores comédias da TV");
     producao[24].totalDicas = 10;
     producao[24].dificuldade = 1;
+
+
+    FILE *arq = fopen("filmes.csv", "w");
+
+    for(int i = 0; i < 25; i++){
+        fprintf(arq, "%s,", producao[i].nomeProducao);
+        for(int j = 0; j < 10; j++){
+            fprintf(arq, "%s,", producao[i].dicas[j]);
+        }
+        fprintf(arq, "\n");
+    }
+     fclose(arq);
 }    
