@@ -504,10 +504,12 @@ void preencheProducao(Producao producao[]) {
     FILE *arq = fopen("filmes.csv", "w");
 
     for(int i = 0; i < 25; i++){
+        fprintf(arq, "%d,", producao[i].tipoProducao);
         fprintf(arq, "%s,", producao[i].nomeProducao);
         for(int j = 0; j < 10; j++){
             fprintf(arq, "%s,", producao[i].dicas[j]);
         }
+        fprintf(arq, "%d,", producao[i].dificuldade);
         fprintf(arq, "\n");
     }
      fclose(arq);

@@ -16,6 +16,8 @@
 // =======================
 // Definições de constantes
 // =======================
+#define MAX_NOME 100
+#define MAX_TAM_DICA 200
 #define NUM_PRODUCOES 25      // Número máximo de produções cadastráveis
 #define MAX_PERGUNTAS 100     // Número máximo de perguntas ou dicas
 #define TAM_NOME 100          // Tamanho máximo para nome de produção ou jogador
@@ -76,7 +78,7 @@ typedef struct {
 
 // Funções do jogo
 void cadastraJogador(Jogador *jogador);
-void preencheProducao(Producao producao[]);
+// void preencheProducao(Producao producao[]);
 void inicializarJogo(EstadoAtualJogo *estadoAtualJogo, Producao producao[]);
 void inicializarMascara(Producao producaoSorteada, EstadoAtualJogo *estadoAtualJogo);
 char converteParaMaiuscula(char letra);

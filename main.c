@@ -13,6 +13,59 @@
  #include <ctype.h>
  #include <time.h>
  #include "main.h"
+
+ void carregarArq() {
+     
+    FILE *arq = NULL;
+    int arqAberto = 1;   // 1 = bin, 2 = csv
+
+    // Tenta abrir o BIN
+    arq = fopen("filmes.bin", "rb");
+    if (arq == NULL) {
+        // Não achou BIN → tenta CSV
+        arq = fopen("filmes.csv", "r");
+        arqAberto = 2;
+
+        if (arq == NULL) {
+            perror("Erro ao abrir arquivo");
+            exit(1);
+        }
+    }
+
+    // Processa o arquivo conforme seu tipo
+    switch (arqAberto) {
+        case 1:
+            printf("Arquivo BIN encontrado.\n");
+            {
+                char buffer[64];
+                size_t lidos;
+
+                while ((lidos = fread(buffer, 1, sizeof(buffer), arq)) > 0) {
+                    printf("BIN: foram lidos %zu bytes\n", lidos);
+                }
+            }
+
+            break;
+
+        case 2:
+            printf("Arquivo CSV encontrado.\n");
+            {
+                char linha[256];
+
+                while (fgets(linha, sizeof(linha), arq) != NULL) {
+                    printf("CSV: %s", linha);
+                }
+            }
+
+            break;
+
+        default:
+            printf("Erro interno. Encerrando...\n");
+            exit(1);
+    }
+
+    fclose(arq);
+}
  
  int main() {
      setlocale(LC_ALL, "");
@@ -37,65 +90,15 @@
  
      // Cadastro do jogador e preenchimento inicial das produções
      cadastraJogador(&jogador);
-     preencheProducao(producao);
+    //  preencheProducao(producao);
 
      int arqAberto = 1; // variável para definir qual arquivo está aberto (binario = 1 ||| CSV = 2)
 
      #include <stdio.h>
      #include <stdlib.h>
      
-     void menuGerenciamentoProducoes() {
-     
-         FILE *arq = NULL;
-         int arqAberto = 1;   // 1 = bin, 2 = csv
-     
-         // Tenta abrir o BIN
-         arq = fopen("filmes.bin", "rb");
-         if (arq == NULL) {
-             // Não achou BIN → tenta CSV
-             arq = fopen("filmes.csv", "r");
-             arqAberto = 2;
-     
-             if (arq == NULL) {
-                 perror("Erro ao abrir arquivo");
-                 exit(1);
-             }
-         }
-     
-         // Processa o arquivo conforme seu tipo
-         switch (arqAberto) {
-             case 1:
-                 printf("Arquivo BIN encontrado.\n");
-                 {
-                     char buffer[64];
-                     size_t lidos;
-     
-                     while ((lidos = fread(buffer, 1, sizeof(buffer), arq)) > 0) {
-                         printf("BIN: foram lidos %zu bytes\n", lidos);
-                     }
-                 }
-     
-                 break;
-     
-             case 2:
-                 printf("Arquivo CSV encontrado.\n");
-                 {
-                     char linha[256];
-     
-                     while (fgets(linha, sizeof(linha), arq) != NULL) {
-                         printf("CSV: %s", linha);
-                     }
-                 }
-     
-                 break;
-     
-             default:
-                 printf("Erro interno. Encerrando...\n");
-                 exit(1);
-         }
-     
-         fclose(arq);
-     }
+     void carregarArq();
+    
      
 
  
