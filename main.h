@@ -78,7 +78,7 @@ typedef struct {
 
 // Funções do jogo
 void cadastraJogador(Jogador *jogador);
-// void preencheProducao(Producao producao[]);
+void preencheProducao(Producao producao[]);
 void inicializarJogo(EstadoAtualJogo *estadoAtualJogo, Producao producao[]);
 void inicializarMascara(Producao producaoSorteada, EstadoAtualJogo *estadoAtualJogo);
 char converteParaMaiuscula(char letra);
@@ -87,6 +87,7 @@ void exibeDica(EstadoAtualJogo *estadoAtualJogo, Producao producaoSorteada);
 void chutarPalavra(EstadoAtualJogo *estadoAtualJogo);
 char normalizarLetra(char c);
 void jogar(EstadoAtualJogo *estadoAtualJogo, Producao producao[], int tempoLimite);
+int menuInicial(Producao *producao);
 
 // Funções de gerenciamento de produções
 void menuGerenciamentoProducoes(Producao producoes[], int *totalProducoes);

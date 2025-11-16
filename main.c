@@ -66,6 +66,26 @@
 
     fclose(arq);
 }
+
+
+int menuInicial(Producao *producao) {
+    int escolhaMenu = 0;
+
+    do {
+        printf("\n=== MENU INICIAL ===\n");
+        printf("1 - Iniciar o jogo\n");
+        printf("2 - Abrir configurações (gerenciar produções)\n");
+        printf("Escolha: ");
+        scanf("%d", &escolhaMenu);
+        getchar();
+
+        if (escolhaMenu != 1 && escolhaMenu != 2)
+            printf("Opção inválida! Digite 1 ou 2.\n");
+
+    } while (escolhaMenu != 1 && escolhaMenu != 2);
+
+    return escolhaMenu;
+}
  
  int main() {
      setlocale(LC_ALL, "");
@@ -90,12 +110,12 @@
  
      // Cadastro do jogador e preenchimento inicial das produções
      cadastraJogador(&jogador);
-    //  preencheProducao(producao);
+     preencheProducao(producao);
 
      int arqAberto = 1; // variável para definir qual arquivo está aberto (binario = 1 ||| CSV = 2)
 
-     #include <stdio.h>
-     #include <stdlib.h>
+     //#include <stdio.h>
+     //#include <stdlib.h>
      
      void carregarArq();
     
@@ -105,23 +125,12 @@
      int tempoLimite = 2; // 2 minutos por palavra
  
      // MENU INICIAL: 1 - Jogar | 2 - Gerenciar produções
-     int escolhaMenu = 0;
-     do {
-         printf("\n=== MENU INICIAL ===\n");
-         printf("1 - Iniciar o jogo\n");
-         printf("2 - Abrir configurações (gerenciar produções)\n");
-         printf("Escolha: ");
-         scanf("%d", &escolhaMenu);
-         getchar(); // limpa buffer
- 
-         if (escolhaMenu != 1 && escolhaMenu != 2)
-             printf("Opção inválida! Digite 1 ou 2.\n");
-     } while (escolhaMenu != 1 && escolhaMenu != 2);
- 
-     if (escolhaMenu == 2) {
-         int totalProducoes = NUM_PRODUCOES;
-         menuGerenciamentoProducoes(producao, &totalProducoes);
-     }
+     int escolhaMenu = menuInicial(producao);
+
+    if (escolhaMenu == 2) {
+        int totalProducoes = NUM_PRODUCOES;
+        menuGerenciamentoProducoes(producao, &totalProducoes);
+    } 
  
      // Laço principal do jogo
      char jogarNovamente = 'S';

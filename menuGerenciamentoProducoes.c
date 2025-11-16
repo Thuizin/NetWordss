@@ -626,6 +626,7 @@ void menuGerenciamentoProducoes(Producao producoes[], int *totalProducoes) {
                     }
                 } else {
                     printf("Saindo...\n");
+                    menuInicial(producoes);
                 }
                 break;
 
