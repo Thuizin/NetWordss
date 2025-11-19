@@ -74,15 +74,16 @@ int menuInicial(Producao *producao) {
     do {
         printf("\n=== MENU INICIAL ===\n");
         printf("1 - Iniciar o jogo\n");
-        printf("2 - Abrir configurações (gerenciar produções)\n");
+        printf("2 - Abrir configurações\n");
+        printf("3 - Sair \n");
         printf("Escolha: ");
         scanf("%d", &escolhaMenu);
         getchar();
 
-        if (escolhaMenu != 1 && escolhaMenu != 2)
+        if (escolhaMenu != 1 && escolhaMenu != 2 && escolhaMenu != 3)
             printf("Opção inválida! Digite 1 ou 2.\n");
 
-    } while (escolhaMenu != 1 && escolhaMenu != 2);
+    } while (escolhaMenu != 1 && escolhaMenu != 2 && escolhaMenu != 3);
 
     return escolhaMenu;
 }
@@ -113,14 +114,8 @@ int menuInicial(Producao *producao) {
      preencheProducao(producao);
 
      int arqAberto = 1; // variável para definir qual arquivo está aberto (binario = 1 ||| CSV = 2)
-
-     //#include <stdio.h>
-     //#include <stdlib.h>
      
      void carregarArq();
-    
-     
-
  
      int tempoLimite = 2; // 2 minutos por palavra
  
@@ -130,7 +125,9 @@ int menuInicial(Producao *producao) {
     if (escolhaMenu == 2) {
         int totalProducoes = NUM_PRODUCOES;
         menuGerenciamentoProducoes(producao, &totalProducoes);
-    } 
+    } else if(escolhaMenu == 3){
+        exit(1); // encerrar jogo
+    }
  
      // Laço principal do jogo
      char jogarNovamente = 'S';
