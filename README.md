@@ -136,6 +136,9 @@ No menu de configurações, você pode:
 ---
 
 **Desenvolvido por:** Thayane Nascimento Rezende
+
                       Isabelle Beatriz Lopes
+                      
                       Matheus Miquelão Prado
+                      
 **Instituição:** UTFPR - Universidade Tecnológica Federal do Paraná
